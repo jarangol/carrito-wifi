@@ -1,21 +1,25 @@
 """
 Avanza, los dos motores marchan en el mismo sentido 
 Gp 11: 1 |  Gp 16: 1   
-Gp 15: 0 |  Gp 18: 0
+Gp 13: 0 |  Gp 18: 0
 """
+#!/usr/bin/env python
 import RPi.GPIO as GPIO
+from time import sleep
+
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11,GPIO.OUT)#Motor1
-GPIO.setup(15,GPIO.OUT)
 
-GPIO.setup(16,GPIO.OUT)#motor2
-GPIO.setup(18,GPIO.OUT)
+adelante = 11
+atras = 13
+pwm = 12
 
-GPIO.output(11,False)
-GPIO.output(15,True)
+GPIO.setup(adelante,GPIO.OUT)#Motor1
+GPIO.setup(atras,GPIO.OUT)
+GPIO.setup(pwm,GPIO.OUT)
 
-GPIO.output(16,False)
-GPIO.output(18,True)
-
-
+GPIO.output(adelante,GPIO.HIGH)
+GPIO.output(atras,GPIO.LOW)
+GPIO.output(pwm,GPIO.HIGH)
+  
+  
 

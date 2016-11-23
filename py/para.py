@@ -1,21 +1,37 @@
 """
-Detener, los dos motores se paran
-Gp 11: 0 |  Gp 16: 0   
-Gp 15: 0 |  Gp 18: 0
+Avanza, los dos motores marchan en el mismo sentido 
+Gp 11: 1 |  Gp 16: 1   
+Gp 13: 0 |  Gp 18: 0
 """
+#!/usr/bin/env python
 import RPi.GPIO as GPIO
+from time import sleep
+
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11,GPIO.OUT)#Motor1
-GPIO.setup(15,GPIO.OUT)
 
-GPIO.setup(16,GPIO.OUT)#motor2
-GPIO.setup(18,GPIO.OUT)
+adelante = 11
+atras = 13
+pwm1 = 12
 
-GPIO.output(11,True)
-GPIO.output(15,True)
+derecha = 15
+izquierda = 16
+pwm2 = 18
 
-GPIO.output(16,True)
-GPIO.output(18,True)
+GPIO.setup(derecha,GPIO.OUT)#Motor direccion
+GPIO.setup(izquierda,GPIO.OUT)
+GPIO.setup(pwm2,GPIO.OUT)
 
+GPIO.setup(adelante,GPIO.OUT)#Motor avance
+GPIO.setup(atras,GPIO.OUT)
+GPIO.setup(pwm1,GPIO.OUT)
 
+GPIO.output(derecha,GPIO.LOW)
+GPIO.output(izquierda,GPIO.LOW)
+GPIO.output(pwm2,GPIO.LOW)
+
+GPIO.output(adelante,GPIO.LOW)
+GPIO.output(atras,GPIO.LOW)
+GPIO.output(pwm1,GPIO.LOW)
+
+GPIO.cleanup()  
 
